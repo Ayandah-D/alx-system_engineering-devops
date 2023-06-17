@@ -2,4 +2,19 @@
 # Bash script that creates an RSA key pair
 #ssh-keygen -b 4096 -P betty -f school
 #ssh-keygen -t rsa -b 4096 -P betty -f school
+#ssh-keygen -t rsa -b 4096 -f school -P betty
+
+#!/bin/bash
+# This script generates an RSA key pair
+
+# Check if ssh-keygen is installed
+if ! [ -x "$(command -v ssh-keygen)" ]; then
+  echo 'Error: ssh-keygen is not installed.' >&2
+  exit 1
+fi
+
+# Generate the RSA key pair
 ssh-keygen -t rsa -b 4096 -f school -P betty
+
+echo "RSA key pair generated successfully!"
+ssh-copy-id user@52.86.147.93
